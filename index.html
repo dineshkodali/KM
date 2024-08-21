@@ -1,264 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Coming Soon</title>
-  <style>
-    @font-face {
-      font-family: 'AdiHaus';
-      src: url('https://assets.codepen.io/6060109/adihaus_regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koding Master - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    @font-face {
-      font-family: "AdiHaus";
-      src: url("https://assets.codepen.io/6060109/adihaus_bold.ttf") format("truetype");
-      font-weight: bold;
-      font-style: normal;
-    }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      border-style: none;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-    }
+        .background-globe {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('https://i.imgur.com/6nPOEXz.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.2;
+            animation: rotate 60s linear infinite;
+        }
 
-    :root {
-      --theme-color-black: #333333;
-      --theme-color-brown: #423A3A;
-      --theme-color-red: #CD3A24;
-      --theme-color-white: #FEFFFF;
-    }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-    html, body {
-      background-color: var(--theme-color-white);
-      font-family: "AdiHaus";
-      font-size: 14px;
-      height: 100%;
-      width: 100%;
-    }
+        .container {
+            width: 80%;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 1;
+        }
 
-    input {
-      font-family: 'AdiHaus';
-    }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            position: relative;
+            text-shadow: 0 0 10px #00ff00;
+        }
 
-    .mobile-container {
-      margin: 0 auto;
-      max-width: 500px;
-      min-width: 300px;
-    }
+        .glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
 
-    .hero-image-desktop {
-      display: none;
-    }
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: black;
+        }
 
-    .hero-banner {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-    }
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
 
-    .hero-banner .logo-wrapper {
-      height: auto;
-      margin: 0 auto;
-      padding: 1rem 0;
-      width: auto;
-    }
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
 
-    .logo-wrapper img {
-      display: block;
-      height: 2.5rem;
-      margin: 0 auto;
-      width: auto;
-    }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            5% { clip: rect(70px, 9999px, 71px, 0); }
+            10% { clip: rect(29px, 9999px, 83px, 0); }
+            15% { clip: rect(16px, 9999px, 91px, 0); }
+            20% { clip: rect(2px, 9999px, 76px, 0); }
+            25% { clip: rect(25px, 9999px, 55px, 0); }
+            30% { clip: rect(46px, 9999px, 25px, 0); }
+            35% { clip: rect(13px, 9999px, 24px, 0); }
+            40% { clip: rect(48px, 9999px, 40px, 0); }
+            45% { clip: rect(66px, 9999px, 53px, 0); }
+            50% { clip: rect(36px, 9999px, 64px, 0); }
+            55% { clip: rect(11px, 9999px, 37px, 0); }
+            60% { clip: rect(50px, 9999px, 71px, 0); }
+            65% { clip: rect(55px, 9999px, 75px, 0); }
+            70% { clip: rect(46px, 9999px, 40px, 0); }
+            75% { clip: rect(23px, 9999px, 54px, 0); }
+            80% { clip: rect(66px, 9999px, 27px, 0); }
+            85% { clip: rect(32px, 9999px, 71px, 0); }
+            90% { clip: rect(67px, 9999px, 34px, 0); }
+            95% { clip: rect(71px, 9999px, 18px, 0); }
+            100% { clip: rect(86px, 9999px, 38px, 0); }
+        }
 
-    .hero-banner .hero-image {
-      background-image: url(https://assets.codepen.io/6060109/athlete-girl.png);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 376px;
-      width: 100%;
-    }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 1.5em;
+        }
 
-    .text-info {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      width: 100%;
-    }
+        .terminal {
+            background-color: rgba(17, 17, 17, 0.8);
+            padding: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            overflow: auto;
+            white-space: pre;
+            text-align: left;
+            margin-bottom: 20px;
+        }
 
-    .text-info > * {
-      padding: 0 2.5rem 1rem;
-    }
+        code {
+            color: #00ff00;
+        }
 
-    .text-info h2:nth-child(1) {
-      color: var(--theme-color-red);
-      font-weight: normal;
-      padding-top: 1.8rem;
-      padding-bottom: 1rem;
-    }
+        .loading {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
 
-    .text-info h2 {
-      font-size: 3.5rem;
-      font-weight: bold;
-      color: var(--theme-color-brown);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-    }
+        .loading:after {
+            content: '.';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
 
-    .text-info p {
-      color: var(--theme-color-black);
-      line-height: 24px;
-    }
+        @keyframes dots {
+            0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);}
+            40% { color: #00ff00; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+            60% { text-shadow: .25em 0 0 #00ff00, .5em 0 0 rgba(0,0,0,0); }
+            80%, 100% { text-shadow: .25em 0 0 #00ff00, .5em 0 0 #00ff00; }
+        }
 
-    .text-info .email-signup {
-      margin: 1rem 0 6rem;
-      position: relative;
-      width: 100%;
-    }
+        .exploit-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 65%, rgba(0, 255, 0, 0.1) 75%, transparent 85%);
+            background-size: 200% 200%;
+            animation: exploit 5s linear infinite;
+        }
 
-    .email-signup .email-input {
-      border: 1px solid rgba(51, 51, 51, .7);
-      border-radius: 3px;
-      padding: 1rem 1.5rem;
-      opacity: .5;
-      width: 100%;
-    }
+        @keyframes exploit {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
 
-    .email-signup .email-input:focus {
-      background-color: var(--theme-color-white);
-      outline: 2px solid var(--theme-color-black);
-      opacity: 1;
-    }
+        .alert {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 255, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            animation: blink 1s infinite;
+        }
 
-    .email-signup .email-submit {
-      background-color: var(--theme-color-black);
-      border-bottom: 1px solid var(--theme-color-black);
-      border-radius: 2px;
-      color: var(--theme-color-white);
-      cursor: pointer;
-      font-weight: bold;
-      opacity: 1;
-      padding: 1rem 1.5rem;
-      position: absolute;
-      right: 0;
-      margin-right: 2.5rem;
-      z-index: 10;
-    }
-
-    @media only screen and (min-width: 768px) {
-      body {
-        background-image: url(https://assets.codepen.io/6060109/destop-bg.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        height: inherit;
-        max-width: 100%;
-        margin: 0 auto;
-        padding-left: 3.5rem;
-      }
-
-      .mobile-container {
-        width: 45vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-
-      .hero-banner .logo-wrapper {
-        margin-left: 3.5rem;
-        width: 100%;
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .logo-wrapper img {
-        margin: 0 0 0;
-        padding-left: 2.5rem;
-      }
-
-      .hero-image {
-        display: none;
-      }
-
-      .text-info {
-        text-align: left;
-        align-items: start;
-      }
-
-      .text-info h2 {
-        font-size: 4.5rem;
-      }
-
-      .text-info p {
-        font-size: 16px;
-      }
-
-      .text-info input {
-        font-size: 16px;
-      }
-
-      .text-info .email-signup {
-        margin: 1rem 0 7rem;
-      }
-
-      .hero-image-desktop {
-        display: block;
-        height: 100%;
-        width: 55vw;
-      }
-
-      .hero-image-desktop img {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .email-signup .email-submit {
-        border-bottom: 2px solid var(--theme-color-black);
-      }
-    }
-  </style>
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="mobile-container">
-    <header>
-      <section class="hero-banner">
-        <div class="logo-wrapper">
-          <!-- Logo can be added here -->
+    <div class="background-globe"></div>
+    <div class="exploit-effect"></div>
+    <div class="alert">KODING MASTER: COMING SOON</div>
+    <div class="container">
+        <h1>
+            KODING MASTER
+            <span class="glitch" data-text="EXPLOIT HUB">KODING MASTER</span>
+        </h1>
+        <p>Get ready for the ultimate Change!</p>
+        <div class="terminal">
+            <code><br>> Initializing Connections...
+> Loading Undetermined exploits
+> Preparing the Networks under Hidden-Communications
+> Establishing secure communication channels
+> Gathering elite community
+> ETA: Coming soon!</code>
         </div>
-        <div class="hero-image"></div>
-      </section>
-    </header>
-    <main>
-      <article class="text-info">
-        <h2>We're</h2>
-        <h2>Coming<br>Soon</h2>
-        <p>Hello students! Our new education website is currently under development. Soon, you'll have access to a wide range of services including training programs, certifications, and internships to help you advance your career.</p>
-      </article>
-    </main>
-  </div>
-  <div class="hero-image-desktop">
-    <img src="https://img.freepik.com/free-photo/confidence-beauty-glowing-technology-city-nights-generated-by-ai_188544-21851.jpg?t=st=1716760528~exp=1716764128~hmac=c6d3bd5e4ae3512767c1c7e3364a9987c6f70a4ec346dcbb85829b6aaa9ee40f&w=1380" alt="Female athlete squinting towards the camera.">
-  </div>
+        <div class="loading">Building the future of Technology</div>
+    </div>
 </body>
-
 </html>
